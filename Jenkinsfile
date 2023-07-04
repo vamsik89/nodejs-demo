@@ -2,7 +2,7 @@
 pipeline {
     agent any 
     environment {
-    DOCKERHUB_CREDENTIALS = credentials('docker-hub-saikumar313')
+    DOCKERHUB_CREDENTIALS = credentials('docker-hub-vamsikrishna72')
     }
     stages { 
         stage('SCM Checkout') {
@@ -13,7 +13,7 @@ pipeline {
 
         stage('Build docker image') {
             steps {  
-                sh 'docker build -t saikumar313/nodeapp1:$BUILD_NUMBER .'
+                sh 'docker build -t vamsikrishna72/dockerimage1:$BUILD_NUMBER .'
             }
         }
         stage('login to dockerhub') {
@@ -23,7 +23,7 @@ pipeline {
         }
         stage('push image') {
             steps{
-                sh 'docker push saikumar313/nodeapp1:$BUILD_NUMBER'
+                sh 'docker push vamsikrishna72/dockerimage1:$BUILD_NUMBER'
             }
         }
 }
