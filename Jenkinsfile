@@ -1,4 +1,3 @@
-
 pipeline {
     agent any 
     environment {
@@ -7,9 +6,11 @@ pipeline {
     stages { 
         stage('SCM Checkout') {
             steps{
-            git 'https://github.com/vamsik89/nodejs-demo.git'
+            git 'https://github.com/sai-313/nodejs-demo.git'
             }
         }
+
+ 
 
         stage('Build docker image') {
             steps {  
@@ -33,4 +34,3 @@ post {
         }
     }
 }
-
