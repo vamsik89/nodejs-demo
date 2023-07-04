@@ -1,18 +1,19 @@
+
 pipeline {
     agent any 
     environment {
-    DOCKERHUB_CREDENTIALS = credentials('saikumar313')
+    DOCKERHUB_CREDENTIALS = credentials('docker-hub-saikumar313')
     }
     stages { 
         stage('SCM Checkout') {
             steps{
-            git 'https://github.com/ravdy/nodejs-demo.git'
+            git 'https://github.com/sai-313/nodejs-demo.git'
             }
         }
 
         stage('Build docker image') {
             steps {  
-                sh 'docker build -t saikumar313/nodeapp:$BUILD_NUMBER .'
+                sh 'docker build -t saikumar313/nodeapp1:$BUILD_NUMBER .'
             }
         }
         stage('login to dockerhub') {
@@ -22,7 +23,7 @@ pipeline {
         }
         stage('push image') {
             steps{
-                sh 'docker push saikumar313/nodeapp:$BUILD_NUMBER'
+                sh 'docker push saikumar313/nodeapp1:$BUILD_NUMBER'
             }
         }
 }
